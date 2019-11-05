@@ -28,7 +28,7 @@ class Node
 			cout<<"Node class has been destroyed"<<endl;
 		}
 		
-		void setCliente(Employee *employee)
+		void setEmployee(Employee *employee)
 		{
 			this->employee = employee;
 		}
