@@ -15,8 +15,9 @@ int main (int argc, char *argv[]) {
 	int hola;
 	cout<<"test final"<<endl;
 
+	Cout<<"test final punto de vista de JUZZZZZZ"<<endl;
 	
-	
+	//ME CAGO EN GIT
 	
 	
 	return 0;
