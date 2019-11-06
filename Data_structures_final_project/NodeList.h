@@ -1,14 +1,15 @@
-#ifndef NODE_H
-#define NODE_H
-class Node
+#ifndef NODELIST_H
+#define NODELIST_H
+#include "Employee.h"
+class NodeList
 {
 	private:
 		Employee *employee;
-		Nodo *next;
-		Nodo *prev;
+		NodeList *next;
+		NodeList *prev;
 		
 	public:
-		Node()
+		NodeList()
 		{
 			this->employee=NULL;
 			this->next=NULL;
@@ -16,16 +17,16 @@ class Node
 			
 		}
 		
-		Node(Employee *employee)
+		NodeList(Employee *employee)
 		{
 			this->employee = employee;
 			next = NULL;
 			prev = NULL;
 		}
 		
-		~Node()
+		~NodeList()
 		{
-			cout<<"Node class has been destroyed"<<endl;
+			
 		}
 		
 		void setEmployee(Employee *employee)
@@ -38,22 +39,22 @@ class Node
 			return this->employee;
 		}
 		
-		Node* getNext()
+		NodeList* getNext()
 		{
-			return this->sig;
+			return this->next;
 		}
 		
-		Node *getPrevious()
+		NodeList *getPrevious()
 		{
 			return this->prev;
 		}
 		
-		void setNext(Node *next)
+		void setNext(NodeList *next)
 		{
 			this->next = next;
 		}
 		
-		void setPrevious(Node *prev)
+		void setPrevious(NodeList *prev)
 		{
 			this->prev = prev;
 		}

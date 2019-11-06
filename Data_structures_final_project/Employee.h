@@ -1,5 +1,6 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
+using namespace std;
 class Employee
 {
 	private:
@@ -18,15 +19,15 @@ class Employee
 		
 		Employee()
 		{
-			id = 0;
-			name = "";
-			address =  "";
-			telephone = "";
-			profession = "";
-			job = "";
-			department ="";
-			hiring_date "";
-			salary = 0.0;
+			this->id = 0;
+			this->name = "";
+			this->address =  "";
+			this->telephone = "";
+			this->profession = "";
+			this->job = "";
+			this->department ="";
+			this->hiring_date = "";
+			this->salary = 0.0;
 		}
 		
 		Employee(int id,string name,string address,string telephone,string profession,
@@ -39,7 +40,7 @@ class Employee
 			this->profession = profession;
 			this->job = job;
 			this->department = department;
-			this->hiring_date hiring_date;
+			this->hiring_date = hiring_date;
 			this->salary = salary;
 		}
 		
