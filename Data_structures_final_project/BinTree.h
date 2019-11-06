@@ -1,5 +1,6 @@
 #ifndef BINTREE_H
 #define BINTREE_H
+
 #include "NodeTree.h"
 class BinTree
 {
@@ -45,7 +46,7 @@ class BinTree
 			if(aux == NULL)
 			{
 				aux = node;
-			}
+			} 
 			else
 			{
 				if(node->getValue() < aux->getValue())
@@ -58,6 +59,37 @@ class BinTree
 				}
 			}
 			counter ++;
+			return aux;
+		}
+		
+		bool search(int id)
+		{
+			return returnSearch(id,this->root);
+		}
+		
+		bool returnSearch(int id, NodeTree *aux)
+		{
+			if(aux == NULL)
+			{
+				return false;
+			}
+			else
+			{
+				if(id == aux->getValue())
+				{
+					return true;
+				}
+				else if(id < aux->getValue())
+				{
+					aux->setLeft(aux->getLeft());
+					returnSearch(id,aux);
+				}
+				else
+				{
+					aux->setRight(aux->getRight());
+					returnSearch(id,aux);
+				}
+			}
 			return aux;
 		}
 		
