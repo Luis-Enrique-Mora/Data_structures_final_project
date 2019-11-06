@@ -12,7 +12,7 @@ int main (int argc, char *argv[]) {
 	cout<<"cambiore de luis de prueba"<<endl;
 
 	cout<<"otro cambio de luis"<<endl;
-	
+	int hola;
 	cout<<"test final"<<endl;
 
 	
