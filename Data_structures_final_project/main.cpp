@@ -13,7 +13,7 @@ int main (int argc, char *argv[]) {
 
 	cout<<"otro cambio de luis"<<endl;
 
-	
+	Cout<<"test final punto de vista de JUZZZZZZ"<<endl;
 	
 	
 	
