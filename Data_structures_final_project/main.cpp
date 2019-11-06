@@ -1,6 +1,7 @@
 #include<iostream>
 #include "conio.h"
 #include "EmployeeList.h"
+#include "BinTree.h"
 using namespace std;
 
 int main (int argc, char *argv[]) {
@@ -58,33 +59,33 @@ int main (int argc, char *argv[]) {
 					
 					switch(opc2)
 					{
-					case '1':
-						
-						cout<<"Ingrese numero de cedula"<<endl;
-						cin>>idNumber;
-						break;
-						
-					case '2':
-						
-						
-						getch();
-						break;
-						
-					case '3':
-						
-						getch();
-						break;
-						
-					case '4':
-						
-						getch();
-						break;
-						
-					default:
-						
-						cout<<"Selecione una opcion valida"<<endl;
-						getch();
-						break;
+						case '1':
+							
+							cout<<"Ingrese numero de cedula"<<endl;
+							cin>>idNumber;
+							break;
+							
+						case '2':
+							
+							
+							getch();
+							break;
+							
+						case '3':
+							
+							getch();
+							break;
+							
+						case '4':
+							
+							getch();
+							break;
+							
+						default:
+							
+							cout<<"Selecione una opcion valida"<<endl;
+							getch();
+							break;
 					}
 					
 				}while(opc2 !='0');
