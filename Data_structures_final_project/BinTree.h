@@ -90,7 +90,9 @@ class BinTree
 					returnSearch(id,aux);
 				}
 			}
-			return aux;
+			
+			return false;
+			
 		}
 		
 };

@@ -1,10 +1,13 @@
 #ifndef LISTNODE_H
 #define LISTNODE_H
 #include "NodeList.h"
+#include "BinTree.h"
 class EmployeeList
 {
 	private:
 		NodeList *head;
+		BinTree *tree;
+		NodeTree *nodeTree;
 		int counter;
 	
 	public:
@@ -12,12 +15,17 @@ class EmployeeList
 		EmployeeList()
 		{
 			this->head = NULL;
-			counter = 0;
+			this->tree = NULL;
+			this->nodeTree = NULL;
+			this->counter = 0;
 		}
 		
 		EmployeeList(int counter)
 		{
 			this->counter = counter;
+			this->head = NULL;
+			this->tree = NULL;
+			this->nodeTree = NULL;
 		}
 		
 		bool empty()
@@ -25,7 +33,7 @@ class EmployeeList
 			return this->head == NULL;
 		}
 		
-		void insertNewNode(NodeList *node)
+		void insertNewEmployee(NodeList *node)
 		{
 			if(!empty())
 			{
@@ -35,7 +43,7 @@ class EmployeeList
 			}
 			else
 			{
-				head = node;
+					head = node;
 			}
 		}
 		
@@ -50,16 +58,16 @@ class EmployeeList
 				while(aux != NULL)
 				{
 					cout<<"*----------------------------------------------------------------*"<<endl;
-					cout<<"Cedula: "<<aux->getEmployee()->getId()<<                        "*"<<endl;
-					cout<<"Nombre: "<<aux->getEmployee()->getName()<<                      "*"<<endl;
-					cout<<"Direccion: "<<aux->getEmployee()->getAddress()<<                "*"<<endl;
-					cout<<"Telefono: "<<aux->getEmployee()->getTelephone()<<               "*"<<endl;
-					cout<<"Profesion: "<<aux->getEmployee()->getProfession()<<             "*"<<endl;
-					cout<<"Puesto: "<<aux->getEmployee()->getJob()<<                       "*"<<endl;
-					cout<<"Fecha de contratacion: "<<aux->getEmployee()->getHiring_date()<<"*"<<endl;
-					cout<<"Salario: "<<aux->getEmployee()->getSalary()<<                   "*"<<endl;
-					aux = aux->getNext();
+					cout<<"Cedula: "<<aux->getEmployee()->getId()<<endl;
+					cout<<"Nombre: "<<aux->getEmployee()->getName()<<endl;
+					cout<<"Direccion: "<<aux->getEmployee()->getAddress()<<endl;
+					cout<<"Telefono: "<<aux->getEmployee()->getTelephone()<<endl;
+					cout<<"Profesion: "<<aux->getEmployee()->getProfession()<<endl;
+					cout<<"Puesto: "<<aux->getEmployee()->getJob()<<endl;
+					cout<<"Fecha de contratacion: "<<aux->getEmployee()->getHiring_date()<<endl;
+					cout<<"Salario: "<<aux->getEmployee()->getSalary()<<endl;
 					cout<<"*--------------------------------------------------------------- *"<<endl;
+					aux = aux->getNext();
 				}
 				
 			}

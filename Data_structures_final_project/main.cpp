@@ -1,15 +1,37 @@
+/*
+Notas y comentarios
+ya esta lista la estructura basica de las clases
+tambien esta listo el metodo insertar
+falta todo lo demàs.
+*/
 #include<iostream>
 #include "conio.h"
 #include "EmployeeList.h"
 #include "BinTree.h"
+#include "Employee.h"
 using namespace std;
 
 int main (int argc, char *argv[]) {
 	
+	//object varables
 	EmployeeList *list = new EmployeeList();
-	int idNumber = 0;
+	Employee *employee=NULL;
+	BinTree *tree = new BinTree();
+	//employee variables
+	int id;
+	string name;
+	string address;
+	string telephone;
+	string profession;
+	string job;
+	string department;
+	string hiring_date;
+	float salary;
+	
+	//menu variables
 	char opc ='0';
 	char opc2 = '0';
+	
 	do
 	{
 		system("cls");
@@ -28,12 +50,50 @@ int main (int argc, char *argv[]) {
 		switch(opc)
 		{
 			case '1':
+				system("cls");
+				cout<<"**********Formulario insertar empleado*********"<<endl;
+				cout<<"Ingrese numero de cedula"<<endl;
+				cin>>id;
+				fflush(stdin);
+				cout<<"Ingrese nombre"<<endl;
+				cin>>name;
+				fflush(stdin);
+				cout<<"Ingrese direccion"<<endl;
+				getline(cin,address);
+				fflush(stdin);
+				cout<<"Ingrese numero de telefono"<<endl;
+				cin>>telephone;
+				fflush(stdin);
+				cout<<"Ingrese profesion"<<endl;
+				cin>>profession;
+				fflush(stdin);
+				cout<<"Ingrese puesto"<<endl;
+				cin>>job;
+				fflush(stdin);
+				cout<<"Ingrese departamento"<<endl;
+				cin>>department;
+				fflush(stdin);
+				cout<<"Ingrese fecha de contratacion"<<endl;
+				cin>>hiring_date;
+				fflush(stdin);
+				cout<<"Ingrese salario"<<endl;
+				cin>>salary;
+				fflush(stdin);
 				
-				cout<<"Insertar valor entero del nodo"<<endl;
+				employee = new Employee(id,name,address,telephone,profession,job,department,hiring_date,salary);
+				if(tree->search(id) == false)
+				{
+					list->insertNewEmployee(new NodeList(employee));
+				}
+				else
+				{
+					cout<<"El empleado con el numero de cedula "<<id<<" ya esxiste en la lista"<<endl;
+				}
+				
 				break;
 				
 			case '2':
-				
+				system("cls");
 				list->printList();
 				getch();
 				break;
@@ -62,7 +122,7 @@ int main (int argc, char *argv[]) {
 						case '1':
 							
 							cout<<"Ingrese numero de cedula"<<endl;
-							cin>>idNumber;
+							cin>>id;
 							break;
 							
 						case '2':
