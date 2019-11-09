@@ -27,7 +27,7 @@ int main (int argc, char *argv[]) {
 	{
 		system("cls");
 		cout<<"1)insertar nodo"<<endl;
-		cout<<"2)recorrer arbol"<<endl;
+		cout<<"2)Mostrar lista"<<endl;
 		cout<<"inserte opcion: "<<endl;
 		cin>>opc;
 		switch(opc)
@@ -64,17 +64,27 @@ int main (int argc, char *argv[]) {
 			cin>>salary;
 			fflush(stdin);
 			
-			
+			if(listEmployee->searchEmployee(id) !=  true)
+			{
 				employee = new Employee(id,name,address,telephone,profession,job,department,hiring_date,salary);
 				list = new NodeList(employee);
 				listEmployee->insertNewEmployee(list);
 				tree->insert(new NodeTree(id,list));
+			}
+			else
+			{
+				system("cls");
+				cout<<"El usuario existe en la lista"<<endl;
+				getch();
+			}
+			
+				
 			
 			
 			break;
 			
 		case '2':
-			tree->recorrer(2);
+			listEmployee->printList();
 			getch();
 			break;
 		}

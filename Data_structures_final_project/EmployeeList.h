@@ -1,7 +1,6 @@
 #ifndef EMPLOYEELIST_H
 #define EMPLOYEELIST_H
 #include "NodeList.h"
-#include "BinTree.h"
 class EmployeeList
 {
 	private:
@@ -72,6 +71,48 @@ class EmployeeList
 			{
 				cout<<"Lista de empleados vacia"<<endl;
 			}
+		}
+		
+		bool searchEmployee(int id)
+		{
+			NodeList *aux;
+			Employee *person;
+			if(!empty())
+			{
+				aux=head;
+				
+				person = aux->getEmployee();
+				while(aux!=NULL && person->getId()!= id)
+				{	
+					aux=aux->getNext();
+					if(aux == NULL)
+					{break;}
+					person = aux->getEmployee();
+					
+				}
+				if(aux != NULL)
+				{
+					if(person->getId() == id)
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
+				
+				
+			}
+			else
+			{
+				return false;
+			}
+			
 		}
 };
 #endif

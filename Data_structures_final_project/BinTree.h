@@ -3,129 +3,137 @@
 using namespace std;
 class BinTree
 {
-private:
-	NodeTree *root;
-	int counter;
-	
-public:
-	
-	BinTree()
-	{
-		this->root = NULL;
-		this->counter = 0;
-	}
-	
-	~BinTree()
-	{
+	private:
+		NodeTree *root;
+		int counter;
 		
-	}
-	
-	int getCounter()
-	{
-		return counter;
-	}
-	
-	void setRoot(NodeTree *root)
-	{
-		this->root = root;
-	}
-	
-	NodeTree *getRoot()
-	{
-		return this->root;
-	}
-	
-	void insert(NodeTree *node)
-	{
-		this->root = SetPosition(this->root,node);
-	}
-	
-	NodeTree *SetPosition(NodeTree *aux, NodeTree *node)
-	{
-		if(aux == NULL)
+	public:
+		
+		BinTree()
 		{
-			aux = node;
+			this->root = NULL;
+			this->counter = 0;
 		}
-		else
+		
+		~BinTree()
 		{
-			if(node->getValue() < aux->getValue())
+			
+		}
+		
+		int getCounter()
+		{
+			return counter;
+		}
+		
+		void setRoot(NodeTree *root)
+		{
+			this->root = root;
+		}
+		
+		NodeTree *getRoot()
+		{
+			return this->root;
+		}
+		
+		void insert(NodeTree *node)
+		{
+			this->root = SetPosition(this->root,node);
+		}
+		
+		NodeTree *SetPosition(NodeTree *aux, NodeTree *node)
+		{
+			if(aux == NULL)
 			{
-				aux->setLeft(SetPosition(aux->getLeft(),node));
+				aux = node;
 			}
 			else
 			{
-				aux->setRight(SetPosition(aux->getRight(),node));
-			}
-		}
-		counter ++;
-		return aux;
-	}
-	NodeTree *search( int id)
-	{
-		return searchEmployee(this->root,id);
-	}
-	NodeTree *searchEmployee(NodeTree *node,int id)
-	{
-		if(node == NULL)
-		{
-			return node;
-		}
-		else
-		{
-			if(id == node->getValue())
-			{
-				return node;
-			}
-			else
-			{
-				if(id < node->getValue())
+				if(node->getValue() < aux->getValue())
 				{
-					node->setLeft(searchEmployee(node->getLeft(),id));
+					aux->setLeft(SetPosition(aux->getLeft(),node));
 				}
 				else
 				{
-					node->setRight(searchEmployee(node->getRight(),id));
+					aux->setRight(SetPosition(aux->getRight(),node));
 				}
 			}
+			counter ++;
+			return aux;
+		}
+		NodeTree *search( int id)
+		{
+			NodeTree *node = searchEmployee(this->root,id);
+			if(node == NULL)
+			{
+				return NULL;
+			}
+			else
+			{
+				return node;
+			}
+		}
+		NodeTree *searchEmployee(NodeTree *node,int id)
+		{
+			if(node == NULL)
+			{
+				return NULL;
+			}
+			else
+			{
+				if(id == node->getValue())
+				{
+					return node;
+				}
+				else
+				{
+					if(id < node->getValue())
+					{
+						node->setLeft(searchEmployee(node->getLeft(),id));
+					}
+					else
+					{
+						node->setRight(searchEmployee(node->getRight(),id));
+					}
+				}
+				
+			}
 			
+			return node;
 		}
 		
-		return node;
-	}
-	
-	void recorrer(int tipo)
-	{
-		switch(tipo)
+		void recorrer(int tipo)
 		{
-		case 2:	//recorre orden
-			mostrarEnOrden(this->root);
-			break;
-		case 3:
-			recorridoPreorden(this->root);
-			break;
-			
+			switch(tipo)
+			{
+			case 2:	//recorre orden
+				mostrarEnOrden(this->root);
+				break;
+			case 3:
+				recorridoPreorden(this->root);
+				break;
+				
+			}
 		}
-	}
-	
-	void mostrarEnOrden(NodeTree *aux)
-	{
-		if(aux!= NULL)
+		
+		void mostrarEnOrden(NodeTree *aux)
 		{
-			mostrarEnOrden(aux->getLeft());
-			cout<<aux->getValue()<<", ";
-			mostrarEnOrden(aux->getRight());
+			if(aux!= NULL)
+			{
+				mostrarEnOrden(aux->getLeft());
+				cout<<aux->getValue()<<", ";
+				mostrarEnOrden(aux->getRight());
+			}
 		}
-	}
-	
-	void recorridoPreorden(NodeTree *node)
-	{
-		if(node != NULL)
+		
+		void recorridoPreorden(NodeTree *node)
 		{
-			cout<<"Nodo: "<<node->getValue();
-			recorridoPreorden(node->getLeft());
-			recorridoPreorden(node->getRight());
+			if(node != NULL)
+			{
+				cout<<"Nodo: "<<node->getValue();
+				recorridoPreorden(node->getLeft());
+				recorridoPreorden(node->getRight());
+			}
 		}
-	}
 	
 };
 #endif
