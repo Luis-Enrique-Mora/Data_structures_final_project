@@ -60,6 +60,38 @@ public:
 		counter ++;
 		return aux;
 	}
+	NodeTree *search( int id)
+	{
+		return searchEmployee(this->root,id);
+	}
+	NodeTree *searchEmployee(NodeTree *node,int id)
+	{
+		if(node == NULL)
+		{
+			return node;
+		}
+		else
+		{
+			if(id == node->getValue())
+			{
+				return node;
+			}
+			else
+			{
+				if(id < node->getValue())
+				{
+					node->setLeft(searchEmployee(node->getLeft(),id));
+				}
+				else
+				{
+					node->setRight(searchEmployee(node->getRight(),id));
+				}
+			}
+			
+		}
+		
+		return node;
+	}
 	
 	void recorrer(int tipo)
 	{
