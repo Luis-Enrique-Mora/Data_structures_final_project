@@ -54,6 +54,10 @@ class Employee
 		{
 			this->name = name;
 		}
+		void setDepartment(string department)
+		{
+			this->department = department;
+		}
 		
 		void setAddress(string address)
 		{
@@ -123,6 +127,11 @@ class Employee
 		float getSalary()
 		{
 			return this->salary;
+		}
+		
+		string getDepartment()
+		{
+			return this->department;
 		}
 	
 };
