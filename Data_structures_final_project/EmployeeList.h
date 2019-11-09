@@ -158,5 +158,88 @@ class EmployeeList
 				cout<<"No hay datos en la lista"<<endl;
 			}
 		}
+		
+		void sortById() 
+		{
+			NodeList *temp = head->getNext();
+			NodeList *previous = NULL;
+			NodeList *next = temp;
+			
+			int id = 0;
+			string name = "";
+			string address = "";
+			string telephone = "";
+			string profession = "";
+			string job = "";
+			string department="";
+			string hiring_date ="";
+			float salary = 0.0;
+			
+			int id2 = 0;
+			string name2 = "";
+			string address2 = "";
+			string telephone2 = "";
+			string profession2 = "";
+			string job2 = "";
+			string department2="";
+			string hiring_date2 ="";
+			float salary2 = 0.0;
+			
+			while(temp != NULL)
+			{
+				next = temp;
+				previous = temp->getPrevious();
+				
+				
+				
+				while(previous->getEmployee()->getId() > next->getEmployee()->getId() )
+				{	
+					//si el anterior es mayor al siguiente van a intercambiar valores
+					id = previous->getEmployee()->getId();
+					name = previous->getEmployee()->getName();
+					address = previous->getEmployee()->getAddress();
+					telephone = previous->getEmployee()->getTelephone();
+					profession = previous->getEmployee()->getProfession();
+					job = previous->getEmployee()->getJob();
+					department= previous->getEmployee()->getDepartment();
+					hiring_date =previous->getEmployee()->getHiring_date();
+					salary = previous->getEmployee()->getSalary();
+					
+					id2 = next->getEmployee()->getId();
+					name2 = next->getEmployee()->getName();
+					address2 = next->getEmployee()->getAddress();
+					telephone2 = next->getEmployee()->getTelephone();
+					profession2 = next->getEmployee()->getProfession();
+					job2 = next->getEmployee()->getJob();
+					department2 = next->getEmployee()->getDepartment();
+					hiring_date2 =next->getEmployee()->getHiring_date();
+					salary2 = next->getEmployee()->getSalary();
+					
+					next->setEmployee(new Employee(id,name,address,telephone,profession,job,department,hiring_date,salary));
+					
+					previous->setEmployee(new Employee(id2,name2,address2,telephone2,profession2,job2,department2,hiring_date2,salary2));
+					
+					//si el nodo anterior del anterior == NUll cabeza = anterior
+					if(previous->getPrevious() == NULL)
+					{
+						head = previous;
+					}
+					
+					/*si el anterior del anterior es nulo quiere decir que es el fin de la lista entonces sale del while,
+					sino se devulve para atras para comprobar que haya otro mayor que el siguiente para cambiarlos de posicion*/
+					if (previous->getPrevious() == NULL || next == NULL)
+					{
+						break;
+					}
+					else
+					{
+						previous = previous->getPrevious();
+						next = next->getPrevious();
+					}
+					
+				}
+				temp = temp->getNext();
+			}
+		}
 };
 #endif

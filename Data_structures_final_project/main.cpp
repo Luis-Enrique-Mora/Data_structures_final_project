@@ -147,7 +147,7 @@ int main (int argc, char *argv[])
 				
 				break;
 			case '7':
-				
+				listEmployee->sortById();
 				break;
 			case '8':
 				
