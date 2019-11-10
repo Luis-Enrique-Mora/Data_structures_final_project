@@ -144,10 +144,14 @@ int main (int argc, char *argv[])
 				
 				break;
 			case '6':
-				
+				listEmployee->sortByName();
+				cout<<"sorted by name"<<endl;
+				getch();
 				break;
 			case '7':
 				listEmployee->sortById();
+				cout<<"sorted by id"<<endl;
+				getch();
 				break;
 			case '8':
 				
