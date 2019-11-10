@@ -60,29 +60,33 @@ class BinTree
 			counter ++;
 			return aux;
 		}
-		NodeTree *search( int id)
+		void search(int id)
 		{
-			NodeTree *node = searchEmployee(this->root,id);
-			if(node == NULL)
-			{
-				return NULL;
-			}
-			else
-			{
-				return node;
-			}
+			searchEmployee(this->root,id);
 		}
 		NodeTree *searchEmployee(NodeTree *node,int id)
 		{
 			if(node == NULL)
 			{
+				cout<<"No se encontró en la lista"<<endl;
 				return NULL;
 			}
 			else
 			{
 				if(id == node->getValue())
 				{
-					return node;
+					Employee *person = node->getList()->getEmployee();
+					cout<<"-----------------------------------"<<endl;
+					cout<<"Cedula:        "<<person->getId()<<endl;
+					cout<<"Nombre:        "<<person->getName()<<endl;
+					cout<<"Direccion:     "<<person->getAddress()<<endl;
+					cout<<"Telefono:      "<<person->getTelephone()<<endl;
+					cout<<"Profesion:     "<<person->getProfession()<<endl;
+					cout<<"Puesto:        "<<person->getJob()<<endl;
+					cout<<"departamento:  "<<person->getDepartment()<<endl;
+					cout<<"Contratacion:  "<<person->getHiring_date()<<endl;
+					cout<<"Salario:       "<<person->getSalary()<<endl;
+					cout<<"-----------------------------------"<<endl;
 				}
 				else
 				{

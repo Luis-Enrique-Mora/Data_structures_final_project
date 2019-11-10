@@ -116,7 +116,10 @@ int main (int argc, char *argv[])
 						switch(opc2)
 						{
 							case '1':
-								
+								cout<<"ingrese numero de cedula"<<endl;
+								cin>>id;
+								tree->search(id);
+								getch();
 								break;
 							case '2':
 								
@@ -124,6 +127,7 @@ int main (int argc, char *argv[])
 								cin>>name;
 								listEmployee->searchEmployeeByName(name);
 								getch();
+								
 								break;
 							case '3':
 								
