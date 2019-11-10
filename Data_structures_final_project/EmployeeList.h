@@ -62,7 +62,7 @@ class EmployeeList
 					cout<<"Puesto:       "<<aux->getEmployee()->getJob()<<endl;
 					cout<<"Contratacion: "<<aux->getEmployee()->getHiring_date()<<endl;
 					cout<<"Salario:      "<<aux->getEmployee()->getSalary()<<endl;
-					cout<<"*-----------------------------------------------------*"<<endl;
+					cout<<"*----------------------------------------------------*"<<endl;
 					aux = aux->getNext();
 				}
 				
@@ -70,6 +70,36 @@ class EmployeeList
 			else
 			{
 				cout<<"Lista de empleados vacia"<<endl;
+			}
+		}
+		
+		void modify(Employee *employee, int id)
+		{
+			NodeList *aux;
+			Employee *person;
+			if(!empty())
+			{
+				aux=head;
+				
+				person = aux->getEmployee();
+				while(aux!=NULL && person->getId()!= id)
+				{	
+					aux=aux->getNext();
+					if(aux == NULL)
+					{break;}
+					person = aux->getEmployee();
+					
+				}
+				if(aux != NULL)
+				{
+					if(person->getId() == id)
+					{
+						aux->setEmployee(employee);
+						cout<<"Employee modified!"<<endl;
+					}
+				}
+				
+				
 			}
 		}
 		

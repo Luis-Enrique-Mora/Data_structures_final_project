@@ -28,10 +28,10 @@ int main (int argc, char *argv[])
 	do
 	{
 		system("cls");
-		cout<<"1)insertar nodo"<<endl;
+		cout<<"1)Nuevo empleado"<<endl;
 		cout<<"2)Mostrar lista"<<endl;
-		cout<<"3)Eliminar"<<endl;
-		cout<<"4)Busqueda"<<endl;
+		cout<<"3)Eliminar empleado"<<endl;
+		cout<<"4)Busquedas"<<endl;
 		cout<<"5)Modificar"<<endl;
 		cout<<"6)Ordenar por nombre"<<endl;
 		cout<<"7)Ordenar por cedula"<<endl;
@@ -142,6 +142,44 @@ int main (int argc, char *argv[])
 				break;
 			case '5':
 				
+				cout<<"Ingrese el numero de cedula"<<endl;
+					cin>>id;
+				if(listEmployee->searchEmployee(id) !=  false)
+				{
+					cout<<"Modificar nombre"<<endl;
+					cin>>name;
+					fflush(stdin);
+					cout<<"Modificar direccion"<<endl;
+					getline(cin,address);
+					fflush(stdin);
+					cout<<"Modificar numero de telefono"<<endl;
+					cin>>telephone;
+					fflush(stdin);
+					cout<<"Modificar profesion"<<endl;
+					cin>>profession;
+					fflush(stdin);
+					cout<<"Modificar puesto"<<endl;
+					cin>>job;
+					fflush(stdin);
+					cout<<"Modificar departamento"<<endl;
+					cin>>department;
+					fflush(stdin);
+					cout<<"Modificar fecha de contratacion"<<endl;
+					cin>>hiring_date;
+					fflush(stdin);
+					cout<<"Modificar salario"<<endl;
+					cin>>salary;
+					fflush(stdin);
+					employee = new Employee(id,name,address,telephone,profession,job,department,hiring_date,salary);
+					
+					listEmployee->modify(employee,id);
+				}
+				else
+				{
+					system("cls");
+					cout<<"El usuario no existe en la lista"<<endl;
+					getch();
+				}
 				break;
 			case '6':
 				listEmployee->sortByName();
