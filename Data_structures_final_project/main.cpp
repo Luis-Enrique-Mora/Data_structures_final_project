@@ -28,6 +28,7 @@ int main (int argc, char *argv[])
 	do
 	{
 		system("cls");
+		cout<<"***Main menu***\n"<<endl;
 		cout<<"1)Nuevo empleado"<<endl;
 		cout<<"2)Mostrar lista"<<endl;
 		cout<<"3)Eliminar empleado"<<endl;
@@ -36,7 +37,7 @@ int main (int argc, char *argv[])
 		cout<<"6)Ordenar por nombre"<<endl;
 		cout<<"7)Ordenar por cedula"<<endl;
 		cout<<"8)Eliminar lista"<<endl;
-		cout<<"0)Salir"<<endl;
+		cout<<"0)Salir\n"<<endl;
 		
 		cout<<"inserte opcion: "<<endl;
 		cin>>opc;
@@ -95,11 +96,15 @@ int main (int argc, char *argv[])
 				
 			case '2':
 				listEmployee->printList();
+				tree->show();
 				getch();
 				break;
 				
 			case '3':
-				
+				cout<<"***Ingrese numero de cedula***"<<endl;
+				cin>>id;
+				listEmployee->deleteNode(id);
+				tree->Delete(id);
 				break;
 			case '4':
 					do{
@@ -146,10 +151,13 @@ int main (int argc, char *argv[])
 				break;
 			case '5':
 				
-				cout<<"Ingrese el numero de cedula"<<endl;
-					cin>>id;
+				cout<<"Ingrese el numero de cedula del empleado a modificar"<<endl;
+				cin>>id;
 				if(listEmployee->searchEmployee(id) !=  false)
 				{
+					cout<<"\t****detalles del empleado****\n"<<endl;
+					tree->search(id);
+					cout<<"\n\n"<<endl;
 					cout<<"Modificar nombre"<<endl;
 					cin>>name;
 					fflush(stdin);

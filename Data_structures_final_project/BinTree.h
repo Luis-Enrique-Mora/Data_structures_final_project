@@ -60,6 +60,134 @@ class BinTree
 			counter ++;
 			return aux;
 		}
+		NodeTree *minValueNode(NodeTree *node)
+		{
+			NodeTree *current = node;
+			
+			while(current && current->getLeft() != NULL)
+			{
+				current = current->getLeft();
+			}
+			
+			return current;
+		}
+		
+		void Delete(int id)
+		{
+			deleteNode(this->root,id);
+		}
+		
+		NodeTree* minimumKey(NodeTree* curr)
+		{
+			while(curr->getLeft() != nullptr) {
+				curr = curr->getLeft();
+			}
+			return curr;
+		}
+		
+		void searchKey(NodeTree* &curr, int id, NodeTree* &parent)
+		{
+			// traverse the tree and search for the key
+			while (curr != nullptr && curr->getValue() != id)
+			{
+				// update parent node as current node
+				parent = curr;
+				
+				// if given key is less than the current node, go to left subtree
+				// else go to right subtree
+				if (id < curr->getValue())
+					curr = curr->getLeft();
+				else
+					curr = curr->getRight();
+			}
+		}
+		
+		void deleteNode(NodeTree*& aux, int id)
+		{
+			// pointer to store parent node of current node
+			NodeTree* parent = nullptr;
+			
+			// start with root node
+			NodeTree* curr = aux;
+			
+			// search key in BST and set its parent pointer
+			searchKey(curr, id, parent);
+			
+			// return if key is not found in the tree
+			if (curr == nullptr)
+				return;
+			
+			// Case 1: node to be deleted has no children i.e. it is a leaf node
+			if (curr->getLeft() == nullptr && curr->getRight() == nullptr)
+			{
+				// if node to be deleted is not a root node, then set its
+				// parent left/right child to null
+				if (curr != aux)
+				{
+					if (parent->getLeft() == curr)
+					{
+						parent->setLeft(nullptr);
+					}
+						
+					else
+					{
+						
+					}
+						parent->setRight(nullptr);
+				}
+				// if tree has only root node, delete it and set root to null
+				else
+					aux = nullptr;
+				
+				// deallocate the memory
+				free(curr);	 // or delete curr;
+			}
+			
+			// Case 2: node to be deleted has two children
+			else if (curr->getLeft() && curr->getRight())
+			{
+				// find its in-order successor node
+				NodeTree* successor  = minimumKey(curr->getRight());
+				
+				// store successor value
+				int val = successor->getValue();
+				NodeList *list = NULL;
+				list = successor->getList();
+				
+				// recursively delete the successor. Note that the successor
+				// will have at-most one child (right child)
+				deleteNode(aux, successor->getValue());
+				
+				// Copy the value of successor to current node
+				curr->setValue(val);
+				curr->setList(list);
+			}
+			
+			// Case 3: node to be deleted has only one child
+			else
+			{
+				// find child node
+				NodeTree* child = (curr->getLeft())? curr->getLeft(): curr->getRight();
+				
+				// if node to be deleted is not a root node, then set its parent
+				// to its child
+				if (curr != aux)
+				{
+					if (curr == parent->getLeft())
+						parent->setLeft(child);
+					else
+						parent->setRight(child);
+				}
+				
+				// if node to be deleted is root node, then set the root to child
+				else
+					aux = child;
+				
+				// deallocate the memory
+				free(curr);
+			}
+		}
+		
 		void search(int id)
 		{
 			searchEmployee(this->root,id);
@@ -105,18 +233,9 @@ class BinTree
 			return node;
 		}
 		
-		void recorrer(int tipo)
+		void show()
 		{
-			switch(tipo)
-			{
-			case 2:	//recorre orden
-				mostrarEnOrden(this->root);
-				break;
-			case 3:
-				recorridoPreorden(this->root);
-				break;
-				
-			}
+			mostrarEnOrden(this->root);
 		}
 		
 		void mostrarEnOrden(NodeTree *aux)
@@ -129,15 +248,6 @@ class BinTree
 			}
 		}
 		
-		void recorridoPreorden(NodeTree *node)
-		{
-			if(node != NULL)
-			{
-				cout<<"Nodo: "<<node->getValue();
-				recorridoPreorden(node->getLeft());
-				recorridoPreorden(node->getRight());
-			}
-		}
 	
 };
 #endif

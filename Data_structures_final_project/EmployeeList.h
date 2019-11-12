@@ -53,7 +53,7 @@ class EmployeeList
 				
 				while(aux != NULL)
 				{
-					cout<<"*----------------------------------------------------*"<<endl;
+					cout<<"*------------------------------------------*"<<endl;
 					cout<<"Cedula:       "<<aux->getEmployee()->getId()<<endl;
 					cout<<"Nombre:       "<<aux->getEmployee()->getName()<<endl;
 					cout<<"Direccion:    "<<aux->getEmployee()->getAddress()<<endl;
@@ -62,7 +62,7 @@ class EmployeeList
 					cout<<"Puesto:       "<<aux->getEmployee()->getJob()<<endl;
 					cout<<"Contratacion: "<<aux->getEmployee()->getHiring_date()<<endl;
 					cout<<"Salario:      "<<aux->getEmployee()->getSalary()<<endl;
-					cout<<"*----------------------------------------------------*"<<endl;
+					cout<<"*------------------------------------------*"<<endl;
 					aux = aux->getNext();
 				}
 				
@@ -164,7 +164,7 @@ class EmployeeList
 				}
 				if(aux != NULL)
 				{
-					cout<<"-----------------------------------"<<endl;
+					cout<<"------------------------------"<<endl;
 					cout<<"Cedula:        "<<person->getId()<<endl;
 					cout<<"Nombre:        "<<person->getName()<<endl;
 					cout<<"Direccion:     "<<person->getAddress()<<endl;
@@ -174,11 +174,49 @@ class EmployeeList
 					cout<<"departamento:  "<<person->getDepartment()<<endl;
 					cout<<"Contratacion:  "<<person->getHiring_date()<<endl;
 					cout<<"Salario:       "<<person->getSalary()<<endl;
-					cout<<"-----------------------------------"<<endl;
+					cout<<"------------------------------"<<endl;
 				}
 				else
 				{
 					cout<<"No esxiste el empleado "<<name<<endl;
+				}
+				
+				
+			}
+			else
+			{
+				cout<<"No hay datos en la lista"<<endl;
+			}
+		}
+		
+		void deleteNode(int id)
+		{
+			NodeList *aux;
+			Employee *person;
+			if(!empty())
+			{
+				aux=head;
+				
+				person = aux->getEmployee();
+				while(aux!=NULL && person->getId()!= id)
+				{	
+					aux=aux->getNext();
+					if(aux == NULL)
+					{break;}
+					person = aux->getEmployee();
+					
+				}
+				if(aux != NULL)
+				{
+					NodeList *temp = aux;
+					NodeList *prev = aux->getPrevious();
+					aux = aux->getNext();
+					prev->setNext(aux);
+					delete temp;
+				}
+				else
+				{
+					cout<<"No esxiste el empleado "<<id<<endl;
 				}
 				
 				
