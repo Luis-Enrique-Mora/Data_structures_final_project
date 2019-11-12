@@ -34,12 +34,14 @@ class BinTree
 		{
 			return this->root;
 		}
-		
+		//insert new node in the binary tree
 		void insert(NodeTree *node)
 		{
-			this->root = SetPosition(this->root,node);
+			NodeTree *temp = NULL;
+			temp = &*node;
+			this->root = SetPosition(this->root,temp);
 		}
-		
+		//this method search a position for the incoming node
 		NodeTree *SetPosition(NodeTree *aux, NodeTree *node)
 		{
 			if(aux == NULL)
@@ -47,7 +49,8 @@ class BinTree
 				aux = node;
 			}
 			else
-			{
+			{	
+				//this two methods travels around the tree to find the right position
 				if(node->getValue() < aux->getValue())
 				{
 					aux->setLeft(SetPosition(aux->getLeft(),node));
@@ -60,6 +63,7 @@ class BinTree
 			counter ++;
 			return aux;
 		}
+		
 		NodeTree *minValueNode(NodeTree *node)
 		{
 			NodeTree *current = node;
@@ -105,7 +109,7 @@ class BinTree
 		void deleteNode(NodeTree*& aux, int id)
 		{
 			// pointer to store parent node of current node
-			NodeTree* parent = nullptr;
+			NodeTree* parent = NULL;
 			
 			// start with root node
 			NodeTree* curr = aux;
@@ -114,11 +118,11 @@ class BinTree
 			searchKey(curr, id, parent);
 			
 			// return if key is not found in the tree
-			if (curr == nullptr)
+			if (curr == NULL)
 				return;
 			
 			// Case 1: node to be deleted has no children i.e. it is a leaf node
-			if (curr->getLeft() == nullptr && curr->getRight() == nullptr)
+			if (curr->getLeft() == NULL && curr->getRight() == NULL)
 			{
 				// if node to be deleted is not a root node, then set its
 				// parent left/right child to null
@@ -126,18 +130,18 @@ class BinTree
 				{
 					if (parent->getLeft() == curr)
 					{
-						parent->setLeft(nullptr);
+						parent->setLeft(NULL);
 					}
 						
 					else
 					{
 						
 					}
-						parent->setRight(nullptr);
+						parent->setRight(NULL);
 				}
 				// if tree has only root node, delete it and set root to null
 				else
-					aux = nullptr;
+					aux = NULL;
 				
 				// deallocate the memory
 				free(curr);	 // or delete curr;
@@ -187,20 +191,21 @@ class BinTree
 				free(curr);
 			}
 		}
-		
+		// this method call searchEmployee method to print the user who is searched 
 		void search(int id)
 		{
 			searchEmployee(this->root,id);
 		}
 		NodeTree *searchEmployee(NodeTree *node,int id)
 		{
+			//if this is null means could not find the Employee in the BST
 			if(node == NULL)
 			{
 				cout<<"No se encontró en la lista"<<endl;
 				return NULL;
 			}
 			else
-			{
+			{	//if the Employee in found print all its information, else keep running the tree
 				if(id == node->getValue())
 				{
 					Employee *person = node->getList()->getEmployee();
@@ -235,16 +240,16 @@ class BinTree
 		
 		void show()
 		{
-			mostrarEnOrden(this->root);
+			ShowInOrder(this->root);
 		}
 		
-		void mostrarEnOrden(NodeTree *aux)
+		void ShowInOrder(NodeTree *aux)
 		{
 			if(aux!= NULL)
 			{
-				mostrarEnOrden(aux->getLeft());
+				ShowInOrder(aux->getLeft());
 				cout<<aux->getValue()<<", ";
-				mostrarEnOrden(aux->getRight());
+				ShowInOrder(aux->getRight());
 			}
 		}
 		
